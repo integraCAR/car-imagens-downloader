@@ -355,19 +355,3 @@ Separador: **ponto-e-vírgula** (`;`)
 
 ---
 
-## Estrutura do Projeto
-
-```
-car-imagens-downloader/
-├── extrator.py          ← ponto de entrada — CLI e orquestração do pipeline
-├── configuracoes.py     ← configurações internas (URLs WMS, camadas, defaults)
-├── requirements.txt     ← dependências Python
-│
-├── utils/
-│   ├── wms.py           ← download WMS, conversão bbox, geração de GeoTIFF
-│   └── manifesto.py     ← leitura e escrita do CSV de manifesto
-│
-├── artifacts/           ← gerado automaticamente (manifesto)
-├── logs/                ← gerado automaticamente (log de execução)
-└── arthur/              ← documentação técnica linha-a-linha de cada arquivo
-```
