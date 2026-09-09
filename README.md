@@ -9,23 +9,53 @@ Para cada coordenada listada em um arquivo CSV, o pipeline produz dois arquivos 
 
 ---
 
-## Instalação
+## Pré-requisitos
 
-```bash
-git clone <url-do-repositorio>
-cd projeto-automacao
-pip install -r requirements.txt
-```
+- **Python 3.8+** instalado (recomenda-se adicionar ao PATH).
+- Arquivo CSV com as coordenadas (veja o formato esperado no final da página).
 
 ---
 
-## Como Usar
+## Instalação e Execução
 
+### Passo 1: Clonar o repositório
+Abra o terminal (Prompt de Comando, PowerShell ou Terminal do Linux/Mac) e clone o projeto:
 ```bash
-# Forma mais simples (usa todos os defaults)
-python extrator.py --csv coordenadas.csv --caminho ./saida
+git clone https://github.com/integraCAR/car-imagens-downloader.git
+cd car-imagens-downloader
+```
 
-# Forma completa com todos os parâmetros
+### Passo 2: Criar ambiente virtual (Recomendado)
+Para não dar conflito com outras bibliotecas do seu computador, crie e ative um ambiente virtual:
+
+**No Windows:**
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+**No Linux/Mac:**
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### Passo 3: Instalar as dependências
+Com o ambiente ativado (você verá um `(venv)` no terminal), instale as bibliotecas necessárias:
+```bash
+pip install -r requirements.txt
+```
+
+### Passo 4: Executar o extrator
+Execute o script `extrator.py` informando o seu arquivo CSV e a pasta onde deseja salvar as imagens.
+
+**Exemplo básico:**
+```bash
+python extrator.py --csv coordenadas_treino_amostra.csv --caminho ./saida
+```
+
+**Exemplo completo (customizando parâmetros):**
+```bash
 python extrator.py \
   --csv coordenadas_treino_amostra.csv \
   --caminho ./saida \
@@ -33,10 +63,15 @@ python extrator.py \
   --largura 1024 \
   --altura 1024 \
   --qtd 1000
+```
+*(Dica: no Windows PowerShell, caso dê erro ao pular linha com `\`, escreva o comando inteiro na mesma linha).*
 
-# Ver ajuda
+**Para consultar a ajuda:**
+```bash
 python extrator.py --help
 ```
+
+---
 
 ## Parâmetros
 
@@ -323,7 +358,7 @@ Separador: **ponto-e-vírgula** (`;`)
 ## Estrutura do Projeto
 
 ```
-projeto-automacao/
+car-imagens-downloader/
 ├── extrator.py          ← ponto de entrada — CLI e orquestração do pipeline
 ├── configuracoes.py     ← configurações internas (URLs WMS, camadas, defaults)
 ├── requirements.txt     ← dependências Python
